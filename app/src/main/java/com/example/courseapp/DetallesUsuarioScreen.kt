@@ -1,6 +1,9 @@
 package com.example.courseapp
 
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -9,10 +12,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberAsyncImagePainter
+import io.ktor.http.Url
+import androidx.compose.ui.platform.LocalContext
+
+
+
 
 @Composable
 fun DetallesUsuarioScreen(viewModel: DetalleUsuarioViewModel = viewModel()) {
     val uiState by viewModel.uiState.collectAsState()
+    val contexto = LocalContext.current
 
     LaunchedEffect(Unit) {
         viewModel.fetchUser()
@@ -39,7 +48,17 @@ fun DetallesUsuarioScreen(viewModel: DetalleUsuarioViewModel = viewModel()) {
                     Text(text = "Edad: ${usuario.age} años", style = MaterialTheme.typography.bodyMedium)
                     Text(text = "Fecha de Nacimiento: ${usuario.birthDate}", style = MaterialTheme.typography.bodyMedium)
                     Text(text = "Género: ${usuario.gender}", style = MaterialTheme.typography.bodyMedium)
-                    Text(text = "Teléfono: ${usuario.phone}", style = MaterialTheme.typography.bodyMedium)
+                    Text(
+                        text = "Teléfono: ${usuario.phone}",
+                        style = MaterialTheme.typography.bodyMedium,
+                        modifier = Modifier
+                            .clickable {
+                                val intent = Intent(Intent.ACTION_DIAL).apply{
+                                    data = Uri.parse("tel:${usuario.phone}")
+                                }
+                                contexto.startActivity(intent)
+                            }
+                    )
                     Text(text = "Email: ${usuario.email}", style = MaterialTheme.typography.bodyMedium)
                     Text(text = "Usuario: ${usuario.username}", style = MaterialTheme.typography.bodyMedium)
                     Text(text = "Contraseña: ${usuario.password}", style = MaterialTheme.typography.bodyMedium)
