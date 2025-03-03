@@ -17,8 +17,8 @@ data class UserResponse(
 data class UserApiModel(
     val firstName: String,
     val lastName: String,
-    val gender: String,
-    val image: String
+    val image: String,
+    val company: Company
 )
 
 
@@ -40,12 +40,17 @@ class Api {
 
                 userResponse.users.map { user ->
                     Usuario(
-                        nombre = user.firstName,
-                        apellido = user.lastName,
-                        genero = user.gender,
-                        image = user.image
+                        firstName = user.firstName,
+                        lastName = user.lastName,
+                        image = user.image,
+                        company = Company(
+                            name = user.company.name,
+                            department = user.company.department,
+                            title = user.company.title
+                        )
                     )
                 }
+
             } catch (e: Exception) {
                 println("Error en getUsers(): ${e.message}")
                 e.printStackTrace()

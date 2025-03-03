@@ -94,11 +94,29 @@ fun itemUsuario(usuario: Usuario, onClick: () -> Unit) {
 
             Spacer(modifier = Modifier.width(16.dp))
 
-            Text(
-                text = "${usuario.nombre} ${usuario.apellido} - (${usuario.genero})",
-                color = Color.Black,
-                fontSize = 14.sp,
-                modifier = Modifier.padding(10.dp)
-            )
+            Column(modifier = Modifier.padding(10.dp)) {
+                Text(
+                    text = "${usuario.firstName} ${usuario.lastName}",
+                    color = Color.Black,
+                    fontSize = 16.sp
+                )
+                Text(
+                    text = usuario.company.name,
+                    color = Color.Gray,
+                    fontSize = 14.sp
+                )
+            }
         }
 }
+
+
+
+
+
+
+
+
+
+
+
+
