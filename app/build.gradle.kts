@@ -41,6 +41,7 @@ android {
 
 dependencies {
     implementation("com.google.accompanist:accompanist-systemuicontroller:0.30.1")
+    implementation("androidx.compose.foundation:foundation:1.6.0")
     implementation("io.coil-kt:coil-compose:2.6.0")
     implementation("androidx.compose.ui:ui-text-google-fonts:1.6.0")
     implementation("io.ktor:ktor-client-core:2.3.4")
@@ -49,6 +50,7 @@ dependencies {
     implementation("io.ktor:ktor-client-content-negotiation:2.3.4")
     implementation("io.ktor:ktor-serialization-gson:2.3.4")
     implementation("com.google.code.gson:gson:2.8.9")
+    implementation("com.google.accompanist:accompanist-flowlayout:0.31.1-alpha")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

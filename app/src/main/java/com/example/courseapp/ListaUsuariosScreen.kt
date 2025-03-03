@@ -1,6 +1,7 @@
 package com.example.courseapp
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -9,6 +10,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
@@ -30,29 +32,49 @@ fun ListaUsuariosScreen(navController: NavController) {
 
     val usuarios = usuariosState.value ?: emptyList()
 
-    LazyColumn(
-        modifier = Modifier.fillMaxSize().padding(16.dp)
-    ) {
-        items(usuarios) { usuario ->
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp)
-                    .clickable {
-                        DetalleUsuarioSingleton.setUsuarioSeleccionado(usuario)
-                        navController.navigate("detallesUsuario")
-                    }
-            ) {
-                Row(modifier = Modifier.padding(16.dp)) {
-                    Image(
-                        painter = rememberAsyncImagePainter(usuario.image),
-                        contentDescription = "Imagen de ${usuario.firstName}",
-                        modifier = Modifier.size(50.dp)
-                    )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Column {
-                        Text(text = "${usuario.firstName} ${usuario.lastName}", style = MaterialTheme.typography.titleLarge)
-                        Text(text = usuario.company.name, style = MaterialTheme.typography.bodyMedium)
+    Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
+        // **Encabezado fijo con total de usuarios**
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(MaterialTheme.colorScheme.primary),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                text = "Total de Usuarios: ${usuarios.size}",
+                style = MaterialTheme.typography.headlineMedium,
+                color = Color.White,
+                modifier = Modifier.padding(16.dp)
+            )
+        }
+
+        Spacer(modifier = Modifier.height(8.dp))
+
+        // **Lista de usuarios**
+        LazyColumn(
+            modifier = Modifier.fillMaxSize()
+        ) {
+            items(usuarios) { usuario ->
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp)
+                        .clickable {
+                            DetalleUsuarioSingleton.setUsuarioSeleccionado(usuario)
+                            navController.navigate("detallesUsuario")
+                        }
+                ) {
+                    Row(modifier = Modifier.padding(16.dp)) {
+                        Image(
+                            painter = rememberAsyncImagePainter(usuario.image),
+                            contentDescription = "Imagen de ${usuario.firstName}",
+                            modifier = Modifier.size(50.dp)
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Column {
+                            Text(text = "${usuario.firstName} ${usuario.lastName}", style = MaterialTheme.typography.titleLarge)
+                            Text(text = usuario.email, style = MaterialTheme.typography.bodyMedium)
+                        }
                     }
                 }
             }
@@ -70,4 +92,3 @@ suspend fun fetchUsers(): List<Usuario> {
         }
     }
 }
-
