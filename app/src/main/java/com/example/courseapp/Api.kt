@@ -15,9 +15,22 @@ data class UserResponse(
 )
 
 data class UserApiModel(
+    val id: Int,
     val firstName: String,
     val lastName: String,
+    val maidenName: String,
+    val age: Int,
+    val gender: String,
+    val email: String,
+    val phone: String,
+    val username: String,
+    val password: String,
+    val birthDate: String,
     val image: String,
+    val bloodGroup: String,
+    val height: Double,
+    val weight: Double,
+    val eyeColor: String,
     val company: Company
 )
 
@@ -40,13 +53,30 @@ class Api {
 
                 userResponse.users.map { user ->
                     Usuario(
-                        firstName = user.firstName,
-                        lastName = user.lastName,
-                        image = user.image,
+
+                        id = user.id,
+                            firstName = user.firstName,
+                            lastName = user.lastName,
+                            maidenName = user.maidenName,
+                            age = user.age,
+                            gender = user.gender,
+                            email = user.email,
+                            phone = user.phone,
+                            username = user.username,
+                            password = user.password,
+                            birthDate = user.birthDate,
+                            image = user.image,
+                            bloodGroup = user.bloodGroup,
+                            height = user.height,
+                            weight = user.weight,
+                            eyeColor = user.eyeColor,
                         company = Company(
                             name = user.company.name,
                             department = user.company.department,
                             title = user.company.title
+
+
+
                         )
                     )
                 }

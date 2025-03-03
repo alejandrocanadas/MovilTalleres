@@ -36,6 +36,18 @@ fun DetallesUsuarioScreen(viewModel: DetalleUsuarioViewModel = viewModel()) {
                     Spacer(modifier = Modifier.height(16.dp))
                     Text(text = "${usuario.firstName} ${usuario.lastName}", style = MaterialTheme.typography.headlineMedium)
                     Text(text = "Trabaja en: ${usuario.company.name}", style = MaterialTheme.typography.bodyMedium)
+                    Text(text = "Edad: ${usuario.age} años", style = MaterialTheme.typography.bodyMedium)
+                    Text(text = "Fecha de Nacimiento: ${usuario.birthDate}", style = MaterialTheme.typography.bodyMedium)
+                    Text(text = "Género: ${usuario.gender}", style = MaterialTheme.typography.bodyMedium)
+                    Text(text = "Teléfono: ${usuario.phone}", style = MaterialTheme.typography.bodyMedium)
+                    Text(text = "Email: ${usuario.email}", style = MaterialTheme.typography.bodyMedium)
+                    Text(text = "Usuario: ${usuario.username}", style = MaterialTheme.typography.bodyMedium)
+                    Text(text = "Contraseña: ${usuario.password}", style = MaterialTheme.typography.bodyMedium)
+                    Text(text = "Grupo Sanguíneo: ${usuario.bloodGroup}", style = MaterialTheme.typography.bodyMedium)
+                    Text(text = "Altura: ${usuario.height} cm", style = MaterialTheme.typography.bodyMedium)
+                    Text(text = "Peso: ${usuario.weight} kg", style = MaterialTheme.typography.bodyMedium)
+                    Text(text = "Color de Ojos: ${usuario.eyeColor}", style = MaterialTheme.typography.bodyMedium)
+
                 }
             }
         }
