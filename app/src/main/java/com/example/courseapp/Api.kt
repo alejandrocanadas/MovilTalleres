@@ -13,7 +13,7 @@ import io.ktor.client.call.body as body
 data class UserResponse(
     val users: List<UserApiModel>
 )
-
+//el user pero en el api model
 data class UserApiModel(
     val id: Int,
     val firstName: String,
@@ -46,11 +46,11 @@ class Api {
     suspend fun getUsers(): List<Usuario> {
         return withContext(Dispatchers.IO) {
             try {
-                val response = client.get("https://dummyjson.com/users")
+                val response = client.get("https://dummyjson.com/users") //pagina de usuarios
                 val userResponse: UserResponse = response.body()
 
                 println("Datos obtenidos de la API: ${userResponse.users.size}")
-
+//como lo visto de la clase
                 userResponse.users.map { user ->
                     Usuario(
 

@@ -2,11 +2,11 @@ package com.example.courseapp.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val PurpleCustom = Color(0xFF7F4D7A)
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
+val PurpleCustom = Color(0xFF4D7F79)
+val Purple80 = Color(0xFFBCF7FF)
+val PurpleGrey80 = Color(0xFFD1B7F5)
 val Pink80 = Color(0xFFEFB8C8)
 
-val Purple40 = Color(0xFF6650a4)
+val Purple40 = Color(0xFF4D7F79)
 val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+val Pink40 = Color(0xFF51B99E)

@@ -5,7 +5,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
-// **Esquema de colores para Modo Claro**
+//Modo Claro
 private val LightColorScheme = lightColorScheme(
     primary = Color(0xFF6200EE),
     secondary = Color(0xFF03DAC5),
@@ -17,7 +17,7 @@ private val LightColorScheme = lightColorScheme(
     onSurface = Color.Black,
 )
 
-// **Esquema de colores para Modo Oscuro**
+// Modo Oscuro
 private val DarkColorScheme = darkColorScheme(
     primary = Color(0xFFBB86FC),
     secondary = Color(0xFF03DAC5),
@@ -29,17 +29,17 @@ private val DarkColorScheme = darkColorScheme(
     onSurface = Color.White,
 )
 
-// **Función para aplicar el tema correcto**
+// Función para aplicar el tema correcto
 @Composable
 fun AppTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(), // Detecta si el sistema está en modo oscuro
+    darkTheme: Boolean = isSystemInDarkTheme(), // deteccion hecha para decidir
     content: @Composable () -> Unit
 ) {
     val colors = if (darkTheme) DarkColorScheme else LightColorScheme
 
     MaterialTheme(
         colorScheme = colors,
-        typography = Typography, // Usa la tipografía definida (opcional)
+        typography = Typography,
         content = content
     )
 }

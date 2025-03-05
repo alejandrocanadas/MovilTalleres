@@ -1,5 +1,5 @@
 package com.example.courseapp
-
+//datos del usuario
 data class Usuario(
     val id: Int,
     val firstName: String,

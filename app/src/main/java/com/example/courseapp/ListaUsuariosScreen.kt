@@ -33,7 +33,7 @@ fun ListaUsuariosScreen(navController: NavController) {
     val usuarios = usuariosState.value ?: emptyList()
 
     Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
-        // **Encabezado fijo con total de usuarios**
+        // Encabezado fijo con total de usuarios (
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -41,7 +41,7 @@ fun ListaUsuariosScreen(navController: NavController) {
             contentAlignment = Alignment.Center
         ) {
             Text(
-                text = "Total de Usuarios: ${usuarios.size}",
+                text = "Total de usuarios en la Lista : ${usuarios.size}",
                 style = MaterialTheme.typography.headlineMedium,
                 color = Color.White,
                 modifier = Modifier.padding(16.dp)
@@ -50,7 +50,7 @@ fun ListaUsuariosScreen(navController: NavController) {
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        // **Lista de usuarios**
+        //Lista de usuarios
         LazyColumn(
             modifier = Modifier.fillMaxSize()
         ) {
@@ -60,8 +60,8 @@ fun ListaUsuariosScreen(navController: NavController) {
                         .fillMaxWidth()
                         .padding(8.dp)
                         .clickable {
-                            DetalleUsuarioSingleton.setUsuarioSeleccionado(usuario)
-                            navController.navigate("detallesUsuario")
+                            DetalleUsuarioSingleton.setUsuarioSeleccionado(usuario) //manejo que pusimos por el singleton
+                            navController.navigate("detallesUsuario") //lo que vimos de las routes
                         }
                 ) {
                     Row(modifier = Modifier.padding(16.dp)) {
